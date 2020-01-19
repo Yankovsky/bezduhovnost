@@ -1,0 +1,28 @@
+{
+  "title": "You are lucky son of suka",
+  "text": "Generous and blagorodnie people of Moscow gave you some money.",
+  "stats": {
+    "rubles": "+10"
+  },
+  "options": [
+    {
+      "title": "Come to pacani",
+      "outcomes": [
+        [25, "youded"],
+        [75, "pacani-nauchili-pit-vodku"]
+      ]
+    },
+    {
+      "title": "Don't come to pacani",
+      "outcomes": [
+        [100, "youded"]
+      ]
+    },
+    {
+      "title": "RUN AWAY",
+      "outcomes": [
+        [100, "you-ran-away"]
+      ]
+    }
+  ]
+}
