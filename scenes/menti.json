@@ -1,0 +1,28 @@
+{
+  "title": "You are begging for money at the vokzal entrance",
+  "text": "However, two cops nearby are interested in what are you doing here. Choose:",
+  "stats": {
+    "health": "-0",
+    "rubles": "-0"
+  },
+  "options": [
+    {
+      "title": "Dat' vziatku",
+      "outcomes":
+        [100, "pacani-nauchili-pit-vodku"]
+      ]
+    },
+    {
+      "title": "Ignore them.",
+      "outcomes": [
+        [100, "youded"]
+      ]
+    },
+    {
+      "title": "RUN AWAY",
+      "outcomes": [
+        [100, "you-ran-away"]
+      ]
+    }
+  ]
+}
