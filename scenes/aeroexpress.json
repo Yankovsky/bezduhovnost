@@ -9,14 +9,14 @@
     {
       "title": "Pobiratsia",
       "outcomes": [
-        [25, "youded"],
-        [75, "pacani-nauchili-pit-vodku"]
+        [50, "menti"],
+        [50, "pobiratsia_uspeh"]
       ]
     },
     {
       "title": "Podrabotat'",
       "outcomes": [
-        [100, "youded"]
+        [100, "gruzchik"]
       ]
     }
   ]
