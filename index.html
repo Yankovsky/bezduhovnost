@@ -32,6 +32,7 @@
             'pacani-nauchili-pit-vodku',
             'win',
             'youded',
+            'you-ran-away',
           ].map(async (scene) => {
             const response = await fetch(`scenes/${scene}.json`)
 		    return [
@@ -77,8 +78,8 @@
       }
 
       const renderScene = (sceneInfo) => {
-        document.getElementById('scene-title').innerText = sceneInfo.title
-        document.getElementById('scene-text').innerText = sceneInfo.text
+        document.getElementById('scene-title').innerHTML = sceneInfo.title
+        document.getElementById('scene-text').innerHTML = sceneInfo.text
         document.getElementById('options').innerHTML = sceneInfo.options.map(option => `<button>${option.title}</button>`).join('\n')
         document.querySelectorAll('#options button').forEach((button, i) => button.addEventListener('click', () => {
           const rand = randomInt()
