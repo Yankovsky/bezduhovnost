@@ -6,22 +6,15 @@
   },
   "options": [
     {
-      "title": "Come to pacani",
+      "title": "Go to kassy",
       "outcomes": [
-        [25, "youded"],
-        [75, "pacani-nauchili-pit-vodku"]
+        [100, "win"]
       ]
     },
     {
-      "title": "Don't come to pacani",
+      "title": "Pobiratsia eschio. Надо подумать, давать ли эту возможность",
       "outcomes": [
-        [100, "youded"]
-      ]
-    },
-    {
-      "title": "RUN AWAY",
-      "outcomes": [
-        [100, "you-ran-away"]
+        [100,]
       ]
     }
   ]
