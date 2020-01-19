@@ -17,12 +17,6 @@
       "outcomes": [
         [100, "youded"]
       ]
-    },
-    {
-      "title": "RUN AWAY",
-      "outcomes": [
-        [100, "you-ran-away"]
-      ]
     }
   ]
 }
