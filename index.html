@@ -33,6 +33,7 @@
             'win',
             'youded',
             'you-ran-away',
+             'welcome'
           ].map(async (scene) => {
             const response = await fetch(`scenes/${scene}.json`)
 		    return [
@@ -111,7 +112,7 @@
       document.getElementById('loading').style.display = 'none'
       document.getElementById('game').style.display = 'block'
 
-      goToScene('intro')
+      goToScene('welcome')
     }
 
     game()
