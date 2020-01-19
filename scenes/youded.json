@@ -1,0 +1,16 @@
+{
+  "title": "Youded",
+  "text": "You did something wrong and now you ded",
+  "stats": {
+    "health": "0",
+    "rubles": "0"
+  },
+  "options": [
+    {
+      "title": "Start over",
+      "outcomes": [
+        [100, "intro"]
+      ]
+    }
+  ]
+}
