@@ -1,0 +1,36 @@
+ 
+{
+  "title": "You wake up in strange cold land",
+  "text": "It is Russia. You wander aimlessly for half an hour and in the end stumbled upon a <i>pochta</i>. There are few people inside: babushka, another babushka, pazan and a fat lady behind the window. Who are you going to ask for help?",
+  "stats": {
+    "health": "100",
+    "rubles": "10"
+  },
+  "options": [
+    {
+      "title": "first babushka",
+      "outcomes": [
+        [25, "youded"],
+        [75, "pacani-nauchili-pit-vodku"]
+      ]
+    },
+    {
+      "title": "second babushka",
+      "outcomes": [
+        [100, "youded"]
+      ]
+    },
+     {
+      "title": "pazan",
+      "outcomes": [
+        [100, "youded"]
+      ]
+    },
+    {
+      "title": "fat lady",
+      "outcomes": [
+        [100, "you-ran-away"]
+      ]
+    }
+  ]
+}
