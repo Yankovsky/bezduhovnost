@@ -9,8 +9,7 @@
     {
       "title": "Find taxi",
       "outcomes": [
-        [25, "youded"],
-        [75, "pacani-nauchili-pit-vodku"]
+        [100, "taxi"]
       ]
     },
     {
@@ -22,7 +21,7 @@
     {
       "title": "Take usual train",
       "outcomes": [
-        [100, "you-ran-away"]
+        [100, "electron"]
       ]
     }
   ]
