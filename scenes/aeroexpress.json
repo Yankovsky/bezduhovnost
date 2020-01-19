@@ -1,0 +1,23 @@
+{
+  "title": "Aeroexpress is a fast and comfortable train to the city center.",
+  "text": "However, this train is dohuya expensive. You realized now that you don't have enough money for the rest of your trip. What are you going to do?",
+  "stats": {
+    "health": "100",
+    "rubles": "-7"
+  },
+  "options": [
+    {
+      "title": "Pibiratsia",
+      "outcomes": [
+        [25, "youded"],
+        [75, "pacani-nauchili-pit-vodku"]
+      ]
+    },
+    {
+      "title": "Podrabotat'",
+      "outcomes": [
+        [100, "youded"]
+      ]
+    }
+  ]
+}
