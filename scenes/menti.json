@@ -9,13 +9,13 @@
     {
       "title": "Dat' vziatku",
       "outcomes":[
-        [100, "pacani-nauchili-pit-vodku"]
+        [100, "nomoney"]
       ]
     },
     {
       "title": "Ignore them.",
       "outcomes": [
-        [100, "youded"]
+        [100, "dalipizdi"]
       ]
     }
   ]
