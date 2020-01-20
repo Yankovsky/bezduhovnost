@@ -7,3 +7,5 @@ vasya – https://vasya--gifted-wright-c2d6de.netlify.com/
 sasha – https://sasha--gifted-wright-c2d6de.netlify.com/
 liza – https://liza--gifted-wright-c2d6de.netlify.com/
 master ветка – https://gifted-wright-c2d6de.netlify.com/
+
+https://miro.com/app/board/iXjVOfpj-Do=/
