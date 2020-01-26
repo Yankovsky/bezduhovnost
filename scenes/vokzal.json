@@ -1,0 +1,16 @@
+{
+  "title": "Your have finnaly arrived to one of the Moscow central stations.",
+  "text": "Now you need to buy a ticket to continue your epic journey. Try to find kassy.",
+  "stats": {
+    "health": "100",
+    "rubles": "10"
+  },
+  "options": [
+    {
+      "title": "Next level.",
+      "outcomes": [
+        [100, "welcome"]
+      ]
+    }
+  ]
+}
