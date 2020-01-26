@@ -1,1 +1,29 @@
+{
+  "title": "Welcome to Moscow, the stolicu of Russian Federaciia",
+  "text": "You have just arrived to Domodedovo airport. This is the nachalo of your epic journey through the transsibirian magistral. The airport is quit far away from the city. You need to choose:",
+  "stats": {
+    "health": "100",
+    "rubles": "10"
+  },
+  "options": [
+    {
+      "title": "Find taxi",
+      "outcomes": [
+        [100, "taxi"]
+      ]
+    },
+    {
+      "title": "Take aeroexpress",
+      "outcomes": [
+        [100, "aeroexpress"]
+      ]
+    },
+    {
+      "title": "Take usual train",
+      "outcomes": [
+        [100, "electron"]
+      ]
+    }
+  ]
+}
 
