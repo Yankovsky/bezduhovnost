@@ -23,7 +23,7 @@
 	</div>
 </div>
 <script>
-	const STARTING_SCENE = 'intro'
+	const STARTING_SCENE = 'welcome'
 	const DEAD_SCENE = 'youded'
 	let scenes
 	// window.addEventListener('error',(x)=>alert(x))
@@ -41,8 +41,20 @@
 		return Promise.all(        [
             STARTING_SCENE,
             DEAD_SCENE,
-            'pacani-nauchili-pit-vodku',
-            'win',
+            'aeroexpress',
+            'pobiratsia_uspeh',
+            'menti',
+	    'dalipizdi',
+	    'electron',
+	    'electron1',
+	    'electron2',
+	    'electron4',
+	    'nomoney',
+	    'taxi',
+	    'vokzal',
+	    'gruzchik',
+	    'nextlevel'
+
           ].map(async (scene) => {
             const response = await fetch(`scenes/${scene}.json`)
 		    return [
@@ -101,8 +113,8 @@
       }
 
       const renderScene = (sceneInfo) => {
-        document.getElementById('scene-title').innerText = sceneInfo.title
-        document.getElementById('scene-text').innerText = sceneInfo.text
+        document.getElementById('scene-title').innerHTML = sceneInfo.title
+        document.getElementById('scene-text').innerHTML = sceneInfo.text
 
         if (player.health <= 0 && currentScene !== DEAD_SCENE) {
           document.getElementById('options').innerHTML = '<button>К сожалению ты умер</button>'

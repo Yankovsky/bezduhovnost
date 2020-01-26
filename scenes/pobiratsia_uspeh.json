@@ -1,0 +1,15 @@
+{
+  "title": "You are lucky son of suka",
+  "text": "Generous and blagorodnie people of Moscow gave you some money.",
+  "stats": {
+    "rubles": "+10"
+  },
+  "options": [
+    {
+      "title": "Go to kassy",
+      "outcomes": [
+        [100, "welcome"]
+      ]
+    }
+  ]
+}
