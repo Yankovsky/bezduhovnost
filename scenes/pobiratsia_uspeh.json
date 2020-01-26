@@ -8,13 +8,7 @@
     {
       "title": "Go to kassy",
       "outcomes": [
-        [100, "win"]
-      ]
-    },
-    {
-      "title": "Pobiratsia eschio. Надо подумать, давать ли эту возможность",
-      "outcomes": [
-        [100,]
+        [100, "welcome"]
       ]
     }
   ]
