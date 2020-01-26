@@ -5,4 +5,81 @@
 
 body {
     font-family: 'MyWebFont', Fallback, sans-serif;
+    background: black;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.game-container {
+    width: 640px;
+    margin: 10px auto;
+    border: 10px groove darkcyan;
+    padding: 10px;
+    height: calc(100% - 20px);
+    box-sizing: border-box;
+}
+
+.scene {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.scene-title {
+}
+
+.scene-text {
+
+}
+
+.scene-image {
+    animation: move 3s infinite;
+}
+
+.options {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    font-size: 20px;
+    padding: 5px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+button:first-child {
+    margin-left: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.fading-out {
+    opacity: 0;
+}
+
+.fading-in {
+    opacity: 1;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(10px);
+    }
 }

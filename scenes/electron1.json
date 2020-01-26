@@ -17,5 +17,6 @@
         [100, "electron2"]
       ]
     }
-  ]
+  ],
+  "image": "train_scale.png"
 }

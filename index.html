@@ -4,33 +4,37 @@
 	<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<h1>bezduhovnost (game?)</h1>
-<div id="loading" style="display: block;">Загрузка</div>
-<div id="game" style="display: none;">
-	<div>
-		Zdоrоvье <span id="health"></span>
-	</div>
-	<div>
-		Rубles <span id="rubles"></span>
-	</div>
-	<div>
-		Duhoвноstь <span id="duhovnost"></span>
-	</div>
-	<div id="scene">
-		<h2 id="scene-title"></h2>
-		<div id="scene-text"></div>
-		<div id="options"></div>
+<div class="game-container">
+	<h1>Бezduхovnost (game?)</h1>
+	<div id="loading" style="display: block;">Загрузка</div>
+	<div id="game" style="display: none;">
+		<div>
+			Zdоrоvье <span id="health"></span>
+		</div>
+		<div>
+			Rубles <span id="rubles"></span>
+		</div>
+		<div>
+			Duhoвноstь <span id="duhovnost"></span>
+		</div>
+		<div id="scene" class="scene">
+			<img id="scene-image" class="scene-image hidden"/>
+			<h2 id="scene-title" class="scene-title"></h2>
+			<div id="scene-text" class="scene-text"></div>
+			<div id="options" class="options"></div>
+		</div>
 	</div>
 </div>
 <script>
-  const STARTING_SCENE = 'welcome'
-  const DEAD_SCENE = 'youded'
-  let scenes
-  // window.addEventListener('error',(x)=>alert(x))
-
   const randomInt = (min = 1, max = 100) => min + Math.floor((max - min) * Math.random())
 
   const game = async () => {
+    const STARTING_SCENE = 'welcome'
+    const DEAD_SCENE = 'youded'
+    let scenes
+    let sceneIsChanging = false
+    let currentScene = STARTING_SCENE
+
     const player = {
       health: 0,
       rubles: 0,
@@ -54,7 +58,6 @@
           'vokzal',
           'gruzchik',
           'nextlevel'
-
         ].map(async (scene) => {
           const response = await fetch(`scenes/${ scene }.json`)
           return [
@@ -71,8 +74,6 @@
         }, {})
       })
     }
-
-    let currentScene = STARTING_SCENE
 
     const updateStats = (statsChanges) => {
       const { health = '+0', rubles = '+0', duhovnost = '+0' } = statsChanges
@@ -106,10 +107,19 @@
 
     }
 
-    const renderStats = () => {
-      document.getElementById('health').innerText = player.health
-      document.getElementById('rubles').innerText = player.rubles
-      document.getElementById('duhovnost').innerText = player.duhovnost
+    const xd = (currentValue, change) => {
+      let html = `${ currentValue }`
+      if (change) {
+        const changeText = Number(change) < 0 ? `<span class="red">(${ change })</span>` : `<span class="green">(${ change })</span>`
+        html += ` ${ changeText }`
+      }
+      return html
+    }
+
+    const renderStats = sceneInfo => {
+      document.getElementById('health').innerHTML = xd(player.health, sceneInfo.stats.health)
+      document.getElementById('rubles').innerHTML = xd(player.rubles, sceneInfo.stats.rubles)
+      document.getElementById('duhovnost').innerHTML = xd(player.duhovnost, sceneInfo.stats.duhovnost)
     }
 
     const renderScene = (sceneInfo) => {
@@ -124,16 +134,43 @@
 
       document.getElementById('options').innerHTML = sceneInfo.options.map(option => `<button>${ option.title }</button>`).join('\n')
       document.querySelectorAll('#options button').forEach((button, i) => button.addEventListener('click', () => {
-        const rand = randomInt()
-        let sum = 0
-        for (const outcome of sceneInfo.options[i].outcomes) {
-          sum += outcome[0]
-          if (rand <= sum) {
-            goToScene(outcome[1])
-            break
+        if (!sceneIsChanging) {
+          sceneIsChanging = true
+
+          let nextScene = null
+
+          const rand = randomInt()
+          let sum = 0
+          for (const outcome of sceneInfo.options[i].outcomes) {
+            sum += outcome[0]
+            if (rand <= sum) {
+              nextScene = outcome[1]
+              break
+            }
           }
+
+          const onTransitionEnd = () => {
+            goToScene(nextScene)
+            sceneIsChanging = false
+            document.getElementById('scene').removeEventListener('transitionend', onTransitionEnd)
+            document.getElementById('scene').classList.add('fading-in')
+            document.getElementById('scene').classList.remove('fading-out')
+          }
+
+          document.getElementById('scene').addEventListener('transitionend', onTransitionEnd)
+          document.getElementById('scene').classList.remove('fading-in')
+          document.getElementById('scene').classList.add('fading-out')
         }
       }))
+    }
+
+    const renderImage = (sceneInfo) => {
+      if (sceneInfo.image) {
+        document.getElementById('scene-image').src = `assets/${ sceneInfo.image }`
+        document.getElementById('scene-image').classList.remove('hidden')
+      } else {
+        document.getElementById('scene-image').classList.add('hidden')
+      }
     }
 
     const goToScene = scene => {
@@ -143,15 +180,16 @@
 
       updateStats(sceneInfo.stats)
       renderPlayer()
-      renderStats()
+      renderStats(sceneInfo)
       renderScene(sceneInfo)
+      renderImage(sceneInfo)
     }
 
 
     try {
       scenes = await uploadAllScenes()
     } catch (e) {
-      window.alert(JSON.stringify(e))
+      console.error(e)
     }
     document.getElementById('loading').style.display = 'none'
     document.getElementById('game').style.display = 'block'
