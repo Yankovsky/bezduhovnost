@@ -1,0 +1,22 @@
+{
+  "title": "Time in electricka tianetsia as slowly as in prison.",
+  "text": "There is another guy saling some super multifunctional kitchen fruit cutter. Do you want to buy one?",
+  "stats": {
+    "health": "100",
+    "rubles": "10"
+  },
+  "options": [
+    {
+      "title": "Yes.",
+      "outcomes": [
+        [100, "electron2"]
+      ]
+    },
+    {
+      "title": "No.",
+      "outcomes": [
+        [100, "electron2"]
+      ]
+    }
+  ]
+}
