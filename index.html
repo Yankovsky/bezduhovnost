@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -23,143 +23,143 @@
 	</div>
 </div>
 <script>
-	const STARTING_SCENE = 'welcome'
-	const DEAD_SCENE = 'youded'
-	let scenes
-	// window.addEventListener('error',(x)=>alert(x))
+  const STARTING_SCENE = 'welcome'
+  const DEAD_SCENE = 'youded'
+  let scenes
+  // window.addEventListener('error',(x)=>alert(x))
 
-	const randomInt = (min = 1, max = 100) => min + Math.floor((max - min) * Math.random())
+  const randomInt = (min = 1, max = 100) => min + Math.floor((max - min) * Math.random())
 
-	const game = async () => {
-      const player = {
-        health: 0,
-        rubles: 0,
-        duhovnost: 0,
-      }
-
-      const uploadAllScenes = async () => {
-		return Promise.all(        [
-            STARTING_SCENE,
-            DEAD_SCENE,
-            'aeroexpress',
-            'pobiratsia_uspeh',
-            'menti',
-	    'dalipizdi',
-	    'electron',
-	    'electron1',
-	    'electron2',
-	    'electron4',
-	    'nomoney',
-	    'taxi',
-	    'vokzal',
-	    'gruzchik',
-	    'nextlevel'
-
-          ].map(async (scene) => {
-            const response = await fetch(`scenes/${scene}.json`)
-		    return [
-              scene,
-              await response.json(),
-            ]
-          })
-        ).then(sceneInfos => {
-          return sceneInfos.reduce((memo, sceneInfo) => {
-            return {
-              ...memo,
-              [sceneInfo[0]]: sceneInfo[1]
-            }
-          }, {})
-		})
-      }
-
-      let currentScene = STARTING_SCENE
-
-	  const updateStats = (statsChanges) => {
-        const { health = '+0', rubles = '+0', duhovnost = '+0' } = statsChanges
-
-	    if (health.startsWith('+')) {
-          player.health += Number(health.slice(1))
-	    } else if (health.startsWith('-')) {
-          player.health -= Number(health.slice(1))
-	    } else {
-          player.health = Number(health)
-	    }
-
-	    if (rubles.startsWith('+')) {
-          player.rubles += Number(rubles.slice(1))
-	    } else if (rubles.startsWith('-')) {
-          player.rubles -= Number(rubles.slice(1))
-	    } else {
-          player.rubles = Number(rubles)
-	    }
-
-	    if (duhovnost.startsWith('+')) {
-          player.duhovnost += Number(duhovnost.slice(1))
-	    } else if (duhovnost.startsWith('-')) {
-          player.duhovnost -= Number(duhovnost.slice(1))
-	    } else {
-          player.duhovnost = Number(duhovnost)
-	    }
-	  }
-
-	  const renderPlayer = () => {
-
-	  }
-
-      const renderStats = () => {
-        document.getElementById('health').innerText = player.health
-        document.getElementById('rubles').innerText = player.rubles
-        document.getElementById('duhovnost').innerText = player.duhovnost
-      }
-
-      const renderScene = (sceneInfo) => {
-        document.getElementById('scene-title').innerHTML = sceneInfo.title
-        document.getElementById('scene-text').innerHTML = sceneInfo.text
-
-        if (player.health <= 0 && currentScene !== DEAD_SCENE) {
-          document.getElementById('options').innerHTML = '<button>К сожалению ты умер</button>'
-          document.querySelector('#options button').addEventListener('click', () => goToScene(DEAD_SCENE))
-          return
-        }
-
-        document.getElementById('options').innerHTML = sceneInfo.options.map(option => `<button>${option.title}</button>`).join('\n')
-        document.querySelectorAll('#options button').forEach((button, i) => button.addEventListener('click', () => {
-          const rand = randomInt()
-          let sum = 0
-          for (const outcome of sceneInfo.options[i].outcomes) {
-            sum += outcome[0]
-            if (rand <= sum) {
-              goToScene(outcome[1])
-              break
-            }
-          }
-        }))
-      }
-
-      const goToScene = scene => {
-        currentScene = scene
-
-        const sceneInfo = scenes[currentScene]
-
-        updateStats(sceneInfo.stats)
-        renderPlayer()
-        renderStats()
-        renderScene(sceneInfo)
-      }
-
-
-      try {
-        scenes = await uploadAllScenes()
-      } catch (e) {
-        window.alert(JSON.stringify(e))
-      }
-      document.getElementById('loading').style.display = 'none'
-      document.getElementById('game').style.display = 'block'
-
-      goToScene(STARTING_SCENE)
+  const game = async () => {
+    const player = {
+      health: 0,
+      rubles: 0,
+      duhovnost: 0,
     }
 
-    game()
+    const uploadAllScenes = async () => {
+      return Promise.all([
+          STARTING_SCENE,
+          DEAD_SCENE,
+          'aeroexpress',
+          'pobiratsia_uspeh',
+          'menti',
+          'dalipizdi',
+          'electron',
+          'electron1',
+          'electron2',
+          'electron4',
+          'nomoney',
+          'taxi',
+          'vokzal',
+          'gruzchik',
+          'nextlevel'
+
+        ].map(async (scene) => {
+          const response = await fetch(`scenes/${ scene }.json`)
+          return [
+            scene,
+            await response.json(),
+          ]
+        })
+      ).then(sceneInfos => {
+        return sceneInfos.reduce((memo, sceneInfo) => {
+          return {
+            ...memo,
+            [sceneInfo[0]]: sceneInfo[1]
+          }
+        }, {})
+      })
+    }
+
+    let currentScene = STARTING_SCENE
+
+    const updateStats = (statsChanges) => {
+      const { health = '+0', rubles = '+0', duhovnost = '+0' } = statsChanges
+
+      if (health.startsWith('+')) {
+        player.health += Number(health.slice(1))
+      } else if (health.startsWith('-')) {
+        player.health -= Number(health.slice(1))
+      } else {
+        player.health = Number(health)
+      }
+
+      if (rubles.startsWith('+')) {
+        player.rubles += Number(rubles.slice(1))
+      } else if (rubles.startsWith('-')) {
+        player.rubles -= Number(rubles.slice(1))
+      } else {
+        player.rubles = Number(rubles)
+      }
+
+      if (duhovnost.startsWith('+')) {
+        player.duhovnost += Number(duhovnost.slice(1))
+      } else if (duhovnost.startsWith('-')) {
+        player.duhovnost -= Number(duhovnost.slice(1))
+      } else {
+        player.duhovnost = Number(duhovnost)
+      }
+    }
+
+    const renderPlayer = () => {
+
+    }
+
+    const renderStats = () => {
+      document.getElementById('health').innerText = player.health
+      document.getElementById('rubles').innerText = player.rubles
+      document.getElementById('duhovnost').innerText = player.duhovnost
+    }
+
+    const renderScene = (sceneInfo) => {
+      document.getElementById('scene-title').innerHTML = sceneInfo.title
+      document.getElementById('scene-text').innerHTML = sceneInfo.text
+
+      if (player.health <= 0 && currentScene !== DEAD_SCENE) {
+        document.getElementById('options').innerHTML = '<button>К сожалению ты умер</button>'
+        document.querySelector('#options button').addEventListener('click', () => goToScene(DEAD_SCENE))
+        return
+      }
+
+      document.getElementById('options').innerHTML = sceneInfo.options.map(option => `<button>${ option.title }</button>`).join('\n')
+      document.querySelectorAll('#options button').forEach((button, i) => button.addEventListener('click', () => {
+        const rand = randomInt()
+        let sum = 0
+        for (const outcome of sceneInfo.options[i].outcomes) {
+          sum += outcome[0]
+          if (rand <= sum) {
+            goToScene(outcome[1])
+            break
+          }
+        }
+      }))
+    }
+
+    const goToScene = scene => {
+      currentScene = scene
+
+      const sceneInfo = scenes[currentScene]
+
+      updateStats(sceneInfo.stats)
+      renderPlayer()
+      renderStats()
+      renderScene(sceneInfo)
+    }
+
+
+    try {
+      scenes = await uploadAllScenes()
+    } catch (e) {
+      window.alert(JSON.stringify(e))
+    }
+    document.getElementById('loading').style.display = 'none'
+    document.getElementById('game').style.display = 'block'
+
+    goToScene(STARTING_SCENE)
+  }
+
+  game()
 </script>
 </body>
 </html>
