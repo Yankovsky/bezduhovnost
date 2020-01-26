@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'MyWebFont';
+    url('uni0553-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+}
+
+body {
+    font-family: 'MyWebFont', Fallback, sans-serif;
+}

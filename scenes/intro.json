@@ -3,7 +3,8 @@
   "text": "It is Russia. You wander aimlessly for half an hour and in the end stumbled upon a larek. Two pacani have noticed you. What do you do?",
   "stats": {
     "health": "100",
-    "rubles": "10"
+    "rubles": "10",
+    "duhovnost": "0"
   },
   "options": [
     {

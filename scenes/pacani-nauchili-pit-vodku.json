@@ -2,7 +2,8 @@
   "title": "You drink vodka",
   "text": "Пацаны пригласили побухать и научили тебя русскому языку",
   "stats": {
-    "health": "+100"
+    "health": "-100",
+    "duhovnost": "+2"
   },
   "options": [
     {
