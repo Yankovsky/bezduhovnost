@@ -1,1 +1,22 @@
-
+{
+  "title": "You are in electricka now. Very efficient and cheap way to travel in Russia.",
+  "text": "Electricka is very slow. Maybe the railroad is old, or maybe they are trying to convince you to use aeroexpress. A salesman enters your wagon. He is saling ice cream. This is a traditional russian zabava to enjoy some ice cream in electricka. Are you going to buy a saharnaya trubocka?",
+  "stats": {
+    "health": "100",
+    "rubles": "10"
+  },
+  "options": [
+    {
+      "title": "Yes",
+      "outcomes": [
+        [100, "electron4"]
+      ]
+    },
+    {
+      "title": "No",
+      "outcomes": [
+        [100, "aelectron3"]
+      ]
+    }
+  ]
+}
