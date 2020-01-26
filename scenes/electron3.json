@@ -1,1 +1,22 @@
-
+{
+  "title": "You have slept a bit, but you are still not in Moscow.",
+  "text": "Are you going to the right direction? You are trying to sposit babushu if this train is going to Moscow. But she does not know your busurmanskii yazyk",
+  "stats": {
+    "health": "100",
+    "rubles": "10"
+  },
+  "options": [
+    {
+      "title": "Try to listen to babushkkas complains to understand maybe something.",
+      "outcomes": [
+        [100, "vokzal"]
+      ]
+    },
+    {
+      "title": "Look at the window and pretend that you are not here.",
+      "outcomes": [
+        [100, "vokzal"]
+      ]
+    }
+  ]
+}
